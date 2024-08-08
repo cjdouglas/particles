@@ -1,0 +1,10 @@
+add_library(glad src/glad.c)
+target_include_directories(glad PUBLIC include)
+
+if (CMAKE_SYSTEM_NAME STREQUAL "Windows")
+  if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+    target_link_libraries(glad ${CMAKE_DL_LIBS})
+  endif ()
+else ()
+  target_link_libraries(glad ${CMAKE_DL_LIBS})
+endif ()
